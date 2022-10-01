@@ -4,7 +4,6 @@ Escolha um numero entre 0 e 10 e tente acertar :)
 - HTML
 - CSS
 - Javascript
-##########
 ### Deploy
 ![Jogue aqui](https://guilhermealves-prog.github.io/jogoDaAdvinhacao/)
 # preview
