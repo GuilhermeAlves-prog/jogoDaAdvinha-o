@@ -8,7 +8,7 @@ const quizCardtry = `
     <p>Adivinhe o número entre 0 e 10</p>
 
     <form>
-      <input type="number" id="userValue" min="0" max="10">
+      <input type="number" id="userValue" min="0" max="10" autofocus>
       <button onclick="verifyNumber(event)">Tentar</button>    
     </form>
   <div/>`
@@ -20,28 +20,33 @@ const quizSucess =`
 <div/>`
 
 
-function render(template) {
+function Render(template) {
   Root.innerHTML = template;
 }
 
-render(quizCardtry)
+Render(quizCardtry)
 
 function verifyNumber(event) {
   event.preventDefault();
   attempts+= 1
-  let userValue = document.getElementById('userValue').value;
 
-  if(userValue == RandomNumber) {
-    render(quizSucess)
+  const userInput = document.getElementById('userValue')
+  let userValue = Number(userInput.value);
+
+  let userValueEqualRandomNumber = userValue === RandomNumber 
+
+  if(userValueEqualRandomNumber) {
+    Render(quizSucess)
     const quizSucessh1 = document.querySelector('.quizsucess h1')
     let attemptsPhrase = attempts > 1 ? 'tentativas' : 'tentativa'
     quizSucessh1.innerHTML = `Acertou em ${attempts} ${attemptsPhrase}!`
   }
-  userValue = document.getElementById('userValue').value = '';
+  userInput.value = '';
+  userInput.focus()
 }
 
 function resetQuiz() {
-  render(quizCardtry)
+  Render(quizCardtry)
   attempts = 0
   RandomNumber = Math.round(Math.random() * 10)
 }
